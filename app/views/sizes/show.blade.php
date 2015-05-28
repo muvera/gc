@@ -1,0 +1,1 @@
+/var/www/gogocake/app/views/sizes/show.blade.php
