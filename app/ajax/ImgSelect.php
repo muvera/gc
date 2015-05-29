@@ -95,7 +95,7 @@ class ImgSelect
             return false;
 		}
 
-		switch (@$_POST['action']) {
+		switch (Input::get()['action']) {
 			case 'upload':
 				$this->upload();
 			break;

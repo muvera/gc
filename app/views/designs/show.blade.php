@@ -68,7 +68,7 @@
       
       // Avatar setup
       $('#avatarModal').imgPicker({
-        url: 'ajax',
+        url: 'http://www.gogocake.dev/designs/3/upload_avatar.php',
         aspectRatio: 1,
         deleteComplete: function() {
           $('#avatar2').attr('src', '/assets/img/default-avatar.png');

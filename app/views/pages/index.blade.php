@@ -1,5 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.main')
 @section('content')
+@include('pages.upload')
 <div class="row">
 
   <div class="col-md-10"><h1>Gallery</h1>
@@ -18,5 +19,3 @@
 </div>
 @stop
 
-
-viewindex

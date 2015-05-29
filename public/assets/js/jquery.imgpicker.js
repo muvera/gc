@@ -21,7 +21,7 @@
 	// Default plugin options
 	defaults = {
 		// Upload url (Value Type: string)
-		url: 'ajax',
+		url: 'server/upload.php',
 
 		// DropZone (See Plugin.prototype.init())
 		//dropZone: null,
@@ -42,7 +42,7 @@
         setSelect: null,
 
         // Flash swf url
-        swf: '/assets/webcam.swf',
+        swf: 'assets/webcam.swf',
 
         // Flash swf width/height (Value Type: array [ w, h ])
         swfSize: [470, 350],
@@ -396,7 +396,7 @@
 				return this.dispatch('alert', this.i18n('jcrop'), 'error');
 
 			var self = this, 
-			imagePreview = 'ajax' + '?action=preview&file=' + image.name + '&width=800',
+			imagePreview = this.options.url + '?action=preview&file=' + image.name + '&width=800',
 			rotation = 0,
 	        coords,
 	        updateCoords = function(_coords) { coords = _coords },
