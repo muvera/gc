@@ -46,6 +46,7 @@ class DesignsController extends \BaseController {
 	{
 				$design = Design::findOrFail($id);
 				$product = $design->products()->first();
+
 				return View::make('designs.show')
 				->with('active',4)
 				->with('product', $product)

@@ -46,3 +46,6 @@ Route::post('product_style_upload', ['as'=>'product_style_upload', 'uses'=>'Uplo
 // Client Upload
 Route::post('rectangle_upload', ['as'=>'rectangle_upload', 'uses'=>'UploadsController@rectangle_upload']);
 
+// Designs Preview
+Route::post('preview_design', ['as'=>'preview_design', 'uses'=>'UploadsController@preview_design']);
+

@@ -18,7 +18,7 @@ $options = array(
 
 	// Upload directory url:
 	//'upload_url' => 'http://localhost/imgPicker/files/',
-	'upload_url' => 'files/',
+	'upload_url' => '/files/',
 
 	// Accepted file types:
 	'accept_file_types' => 'png|jpg|jpeg|gif',
@@ -44,8 +44,8 @@ $options = array(
     		//'upload_url' => '',
     		// Create square image
     		'crop' => true,
-    		'max_width' => 200,
-    		'max_height' => 200
+    		'max_width' => 751,
+    		'max_height' => 751
     	),
     ),
 
@@ -78,7 +78,7 @@ $options = array(
 	 *  @return void
 	 */
 	'upload_start' => function($image, $instance) {
-		$image->name = '~avatar.' . $image->type;		
+		$image->name = '~'.$image->name.'.' . $image->type;		
 	},
 	
 	/**
@@ -99,7 +99,12 @@ $options = array(
 	 *  @return void
 	 */
 	'crop_start' => function($image, $instance) {
-		$image->name = 'avatar.' . $image->type;
+		// Rename the Image to a number
+		$new_name = rand(10,10000);
+		$image->name = $new_name.'.' . $image->type;
+		// Save the image name to a Session
+		$_SESSION['avatar'] = '/files/'.$new_name.'-avatar.' . $image->type;
+	
 	},
 
 	/**

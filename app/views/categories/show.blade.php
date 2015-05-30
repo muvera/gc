@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.main')
 @section('content')
 <div class="row">
 
@@ -13,6 +13,3 @@
   </div>
 </div>
 @stop
-
-
-viewindex

@@ -125,5 +125,45 @@ class UploadsController extends \BaseController {
 	}
 
 
+		// PREVIEW DESIGNS
+		public function preview_design(){
+
+		
+		session_start();
+		if(isset($_SESSION['avatar'])){
+		$avatar = $_SESSION['avatar'];
+		}else{
+			dd('Please Upload Image');
+		}
+
+		$input = Input::get();
+		$design = $input['design'];
+
+
+		$realpath = public_path();
+		$path = public_path('uploads/');
+
+		// Transparencies
+		$transparent_cricle = $realpath.'/transparent/circle-8inch.png';
+
+		$preview_name = rand(10,10000);
+		
+		// Make the Sticker Canvas white
+		$canvas = Image::canvas(1100, 850, '#ffffff');
+		$canvas->insert($realpath.$avatar, 'center');
+		//$canvas->insert($transparent_cricle, 'center');
+		$canvas->insert($realpath.$design, 'center');
+		$canvas->save($path.'temp/'.$preview_name. '.jpg');
+
+		// Put the file name in to a session
+		Session::put('preview', '/uploads/temp/'.$preview_name. '.jpg');
+
+
+
+		return Redirect::back()->with('notification','Design was generated');
+
+	}
+
+
 
 }

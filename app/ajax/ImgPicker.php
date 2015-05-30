@@ -41,15 +41,12 @@ class ImgPicker
 	 */
 	function __construct($options = array(), $error_messages = array())
 	{
-		// ALTERATION
-		$path = public_path('files/');
-
 		$this->options = array(
 			// Upload directory path:
-			'upload_dir' => $path,
+			'upload_dir' => dirname(__FILE__) . '/files/',
 
 			// Upload directory url:
-			'upload_url' => $this->getFullUrl() . $path,
+			'upload_url' => $this->getFullUrl() . '/files/',
 			
 			// Accepted file types:
 			'accept_file_types' => 'png|jpg|jpeg|gif',
