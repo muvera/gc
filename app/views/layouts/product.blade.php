@@ -8,20 +8,20 @@
 	<link rel="icon" href="/assets/img/favicon.png">
 	<title>Gogo Cake </title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
 @yield('script')
 </head>
 <body>
+  @include('partials._flash')
   @include('layouts.admin_nav')
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" style="background-color:#fff5ff;">
-       @include('partials._flash')
+       
       <div class="container">
 
         @yield('content')
+     
       </div>
-    </div>
-
+   
     <div class="container">
 
 

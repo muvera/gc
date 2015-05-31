@@ -8,9 +8,7 @@ $avatar = $_SESSION['avatar'];
 
 ?>
 
-
-<div class="main">
-		<div class="container"><div class="box">
+		<div class="box">
 			<div class="content clearfix">
 				@if(isset($_SESSION['avatar']))
 				<img src="{{$avatar}}" id="avatar2" width="150"><br>
@@ -72,8 +70,10 @@ $avatar = $_SESSION['avatar'];
 
 
 			</div>
-		</div></div>
-	</div>
+		</div>
+	
+
+
 
 	<script> 
 		$(function() {

@@ -49,3 +49,8 @@ Route::post('rectangle_upload', ['as'=>'rectangle_upload', 'uses'=>'UploadsContr
 // Designs Preview
 Route::post('preview_design', ['as'=>'preview_design', 'uses'=>'UploadsController@preview_design']);
 
+// Auth
+Route::get('login', 'SessionsController@create');
+Route::get('logout', 'SessionsController@destroy');
+Route::resource('sessions', 'SessionsController', ['only'=>['index', 'create', 'destroy', 'store']]);
+

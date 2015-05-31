@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.product')
 @section('script')
 @include('include.upload_script')
 @stop
@@ -23,31 +23,17 @@
 	<img src="/uploads/products/{{$product->id}}/{{$design->id}}/{{$design->img}}" width="500" class="img-responsive">
 	@endif
 
-{{Session::get('preview')}}
-<br>
-
-
-<br>Macth
-{{'/uploads/products/'.$product->id .'/'.$design->id.'/'.$design->img}}
-<br>Mathch
-{{Session::get('current_design')}}
 
 <?php
 Session::put('current_design', '/uploads/products/'.$product->id .'/'.$design->id.'/'.$design->img)
 ?>
 
 <br>
-
-
-
-
   </div>
 
 <div class="col-md-5">
-  <h3>Costumize</h3>
-  <div class="row">
+  <h3>Customize</h3>
 @include('pages.upload')
-</div>
 </div>
 
 </div>
