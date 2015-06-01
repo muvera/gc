@@ -137,6 +137,7 @@ class UploadsController extends \BaseController {
 		}
 
 		$input = Input::get();
+		$design_id = $input['design_id'];
 		$design = $input['design'];
 
 
@@ -157,10 +158,16 @@ class UploadsController extends \BaseController {
 
 		// Put the file name in to a session
 		Session::put('preview', '/uploads/temp/'.$preview_name. '.jpg');
+		$preview = Session::get('preview');
 
 
+		$design = Design::findOrFail($design_id);
+			
 
-		return Redirect::back()->with('notification','Design was generated');
+		return View::make('designs.preview')
+					->with('preview',$preview)
+					->with('design', $design);
+					->with('notification','Design was generated');
 
 	}
 

@@ -11,6 +11,9 @@ $avatar = $_SESSION['avatar'];
 		<div class="box">
 			<div class="content clearfix">
 				@if(isset($_SESSION['avatar']))
+
+						<!-- Check if the design matches this design -->
+
 				<img src="{{$avatar}}" id="avatar2" width="150"><br>
 				@else
 				<img src="/assets/img/default-avatar.png" id="avatar2" width="150"><br>
@@ -18,13 +21,13 @@ $avatar = $_SESSION['avatar'];
 				
 				
 				<button type="button" class="btn btn-default" data-ip-modal="#avatarModal">Edit Photo</button>
-@if(isset($_SESSION['avatar']))
+
 {{Form::open(['route'=>'preview_design'])}}
 {{Form::hidden('design', Session::get('current_design'))}}
-{{Form::hidden('avatar', $avatar)}}
+{{Form::hidden('design_id', $design->id)}}
 <button type="submit" class="btn btn-success" >Preview</button>
 {{Form::close()}}
-@endif
+
 
 				
 				

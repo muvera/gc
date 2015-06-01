@@ -118,6 +118,20 @@ class ProductsController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+
+		$product = Product::findOrFail($id);
+
+		$designs = $product->designs()->get();
+		// Delete All Designs from this Product
+		foreach ($designs as $design) {
+			$design->delete();
+		}
+
+		$product->delete();
+
+
+		return Redirect::back()->with('notification', 'Product and Designs where deleted.');
+
 	}
 
 }
