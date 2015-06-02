@@ -32,7 +32,6 @@ Route::resource('designs', 'DesignsController');
 // Admin
 Route::resource('administrators', 'AdministratorsController');
 Route::get('admin', ['as'=>'admin', 'uses'=>'AdministratorsController@index']);
-Route::get('admin_categories', ['as'=>'admin_categories', 'uses'=>'AdministratorsController@admin_categories']);
 Route::get('admin_products', ['as'=>'admin_products', 'uses'=>'AdministratorsController@admin_products']);
 Route::get('admin_styles', ['as'=>'admin_styles', 'uses'=>'AdministratorsController@admin_styles']);
 Route::get('admin_sizes', ['as'=>'admin_sizes', 'uses'=>'AdministratorsController@admin_sizes']);
@@ -53,4 +52,9 @@ Route::post('preview_design', ['as'=>'preview_design', 'uses'=>'UploadsControlle
 Route::get('login', 'SessionsController@create');
 Route::get('logout', 'SessionsController@destroy');
 Route::resource('sessions', 'SessionsController', ['only'=>['index', 'create', 'destroy', 'store']]);
+
+// Cart
+Route::post('add_item', ['as'=>'add_item', 'uses'=>'CartController@add_item']);
+Route::get('checkout', ['as'=>'checkout', 'uses'=>'CartController@checkout']);
+Route::get('delete_items', ['as'=>'delete_items', 'uses'=>'CartController@delete_items']);
 

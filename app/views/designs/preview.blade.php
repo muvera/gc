@@ -16,13 +16,15 @@
   Preview
     
   </h3>
-	<img src="{{Session::get('preview')}}" width="500" class="img-responsive">
+	<img src="{{$preview}}" width="500" class="img-responsive">
 <br>
   </div>
 
 <div class="col-md-5">
   <h3>Customize</h3>
 @include('pages.upload')
+
+
 </div>
 
 </div>

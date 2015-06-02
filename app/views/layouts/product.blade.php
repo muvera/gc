@@ -15,13 +15,19 @@
 </head>
 <body>
   @include('partials._flash')
+  @if(Auth::user())
+    @if(Auth::user()->roles()->first()->name == 'admin')
   @include('layouts.admin_nav')
-
+    @endif
+  @endif
        
+      
+      <div class="well">
       <div class="container">
 
         @yield('content')
      
+      </div>
       </div>
    
     <div class="container">

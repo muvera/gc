@@ -31,20 +31,21 @@
 
   @if(Auth::user())
     @if(Auth::user()->roles()->first()->name == 'admin')
-  @include('layouts.admin_nav')
-    @else
-    Include User Nav
+     @include('layouts.admin_nav')
     @endif
 
+  @else
+  @include('layouts.user_nav')
+  
   @endif
 
-       
+       <div class="well">
       <div class="container">
 
         @yield('content')
      
       </div>
-   
+   </div>
     <div class="container">
 
 

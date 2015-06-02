@@ -15,17 +15,10 @@
 	</a>
     
   </h3>
-
-
-	@if('/uploads/products/'.$product->id .'/'.$design->id.'/'.$design->img == Session::get('current_design'))
-	<img src="{{Session::get('preview')}}" width="500" class="img-responsive">
-	@else
-	<img src="/uploads/products/{{$product->id}}/{{$design->id}}/{{$design->img}}" width="500" class="img-responsive">
-	@endif
-
+ <img src="/uploads/products/{{$product->id}}/{{$design->styles()->first()->id}}/{{$design->img}}" width="500" class="img-responsive">
 
 <?php
-Session::put('current_design', '/uploads/products/'.$product->id .'/'.$design->id.'/'.$design->img)
+Session::put('current_design', '/uploads/products/'.$product->id .'/'.$design->styles()->first()->id.'/'.$design->img)
 ?>
 
 <br>
@@ -34,6 +27,7 @@ Session::put('current_design', '/uploads/products/'.$product->id .'/'.$design->i
 <div class="col-md-5">
   <h3>Customize</h3>
 @include('pages.upload')
+@include('payments.add_item')
 </div>
 
 </div>

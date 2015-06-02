@@ -1,20 +1,11 @@
 
-<?php
-session_start();
-if(isset($_SESSION['avatar'])){
-$avatar = $_SESSION['avatar'];
-
-}
-
-?>
 
 		<div class="box">
 			<div class="content clearfix">
 				@if(isset($_SESSION['avatar']))
-
 						<!-- Check if the design matches this design -->
 
-				<img src="{{$avatar}}" id="avatar2" width="150"><br>
+				<img src="{{$_SESSION['avatar']}}" id="avatar2" width="150"><br>
 				@else
 				<img src="/assets/img/default-avatar.png" id="avatar2" width="150"><br>
 				@endif

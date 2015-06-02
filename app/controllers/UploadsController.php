@@ -162,11 +162,15 @@ class UploadsController extends \BaseController {
 
 
 		$design = Design::findOrFail($design_id);
-			
 
+		$product = $design->products()->first();
+
+		$active = 0;
 		return View::make('designs.preview')
 					->with('preview',$preview)
-					->with('design', $design);
+					->with('design', $design)
+					->with('product', $product)
+					->with('active', $active)
 					->with('notification','Design was generated');
 
 	}
