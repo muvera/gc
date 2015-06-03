@@ -1,13 +1,16 @@
 
 {{Form::open(['route'=>'add_item'])}}
 {{Form::hidden('design_id', $design->id)}}
-{{Form::hidden('preview', 'preview.jpg')}}
+{{Form::hidden('preview', $preview)}}
+		<!-- greetings -->
+<div class="form-group">
+		{{ Form::label('greetings', 'Custom Text:') }}
+		{{ Form::text('greetings', null, ['class'=>'form-control']) }}
+</div>
 <button class="btn btn-success btn-block">Add to Cart</button>
 {{Form::close()}}
 
 @if(Session::get('items'))
-You have {{count(Session::get('items'))}} items.
-<a href="/checkout" class="btn btn-primary">Checkout</a>
+You have {{count(Session::get('items'))}} <a href="/checkout">items.</a>
 
-<a href="/delete_items">Delete</a>
 @endif

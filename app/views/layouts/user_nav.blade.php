@@ -27,8 +27,12 @@
 
           </ul>
 
+@if(Session::get('items'))
 
-
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href="/checkout" class="btn btn-primary"> <span class="glyphicon glyphicon-shopping-cart"></span> Checkout</a></li>
+          </ul>
+@endif
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

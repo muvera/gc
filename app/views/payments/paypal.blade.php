@@ -1,8 +1,12 @@
 @extends('layouts.master')
 @section('content')
+<h1>Checkout</h1>
 
+<?php
+$invoice = rand(10,10000);
+?>
 
-<form id="paypal_checkout" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form id="paypal_checkout" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_cart" />
 <input type="hidden" name="upload" value="1" />			
 <input type="hidden" name="no_note" value="0" />						
@@ -17,12 +21,12 @@
        <input type="hidden"  value="1.99" />
        <input type="hidden" name="currency_code" value="USD" />
        <input type="hidden" name="lc" value="US" />
-        <input type="hidden" name="invoice" value="{{rand(10,100)}}" />
-       <input type="hidden" name="return" value="return url" />			
-       <input type="hidden" name="cbt" value="Message" />
+        <input type="hidden" name="invoice" value="GC{{$invoice}}" />
+       <input type="hidden" name="return" value="http://gogocake.com/return_url/GC{{$invoice}}" />			
+       <input type="hidden" name="cbt" value="Click here to COMPLETE ORDER!" />
        <input type="hidden" name="cancel_return" value="cancell url" />
         <hr>
-<h3>Your Items</h3>
+<h3>{{count(Session::get('items'))}}Items</h3>
        <!-- foreach loop starts -->
        <div id="item_1" class="itemwrap">
                <?php 
@@ -32,14 +36,24 @@
 <div class="row">
 
         @foreach($items as $key => $product)
+
+<input name="item_number_{{$option_loop}}" type="hidden" value="{{$product['id']}}">
+
+        <img src="{{$product['preview']}}" alt="{{$product['name']}}" class="img-responsive thumbnail" width="500">
             <strong>Item Name:</strong> {{$product['name']}}
             <!-- product name -->
             <input type="hidden" name="item_name_{{$option_loop}}" value="{{$product['name']}}"/>
 
+<br>
+<strong>Custom Text</strong><input name="on1_{{$option_loop}}" type="text" value="{{$product['greetings']}}">
+<input name="os1_{{$option_loop}}" type="hidden" value="{{$product['preview']}}">
+
+
+
             <!-- Product Quantity -->
         <input type="hidden" name="quantity_{{$option_loop}}" value="1" />
             <strong>Qty: </strong>{{$option_loop}}
-            <input type="hidden" name="tax_$option_loop" value="0.10" />
+            <input type="hidden" name="tax_{{$option_loop}}" value="0.10" />
             <!-- Total Cost -->
             <input type="hidden" name="amount_{{$option_loop}}" value="{{$sum + 7.99}}" />
             <strong>Price: </strong>{{$sum + 7.99}}

@@ -58,3 +58,6 @@ Route::post('add_item', ['as'=>'add_item', 'uses'=>'CartController@add_item']);
 Route::get('checkout', ['as'=>'checkout', 'uses'=>'CartController@checkout']);
 Route::get('delete_items', ['as'=>'delete_items', 'uses'=>'CartController@delete_items']);
 
+// Invoice and Return Url
+Route::post('return_url/{id}', ['as'=>'return_url', 'uses'=>'CartController@return_url']);
+

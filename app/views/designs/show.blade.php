@@ -27,7 +27,6 @@ Session::put('current_design', '/uploads/products/'.$product->id .'/'.$design->s
 <div class="col-md-5">
   <h3>Customize</h3>
 @include('pages.upload')
-@include('payments.add_item')
 </div>
 
 </div>

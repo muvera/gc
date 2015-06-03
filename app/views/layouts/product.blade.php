@@ -19,6 +19,8 @@
     @if(Auth::user()->roles()->first()->name == 'admin')
   @include('layouts.admin_nav')
     @endif
+  @else
+    @include('layouts.user_nav')
   @endif
        
       
