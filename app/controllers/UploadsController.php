@@ -34,6 +34,7 @@ class UploadsController extends \BaseController {
 		// Product Upload
 		public function product_upload(){
 
+
 		$input = Input::get();
 		$image = Input::file('img');
 		$folder = public_path('/uploads/products/'.$input['product_id']);
@@ -45,8 +46,19 @@ class UploadsController extends \BaseController {
 		$upload = $image->getClientOriginalName();
 
 		$image->move(public_path('/uploads/products/' . $input['product_id']), $new_name);
+		// Watermark and resize the image
+		$watermark = public_path('watermark.png');
 
-		
+		$image = public_path('/uploads/products/' . $input['product_id']) .'/'.$new_name;
+
+		$img = Image::make($image);
+		$img->insert($watermark, 'bottom-right', 10, 10);
+		$img->resize(300, null, function ($constraint) {
+    	$constraint->aspectRatio();
+    	});
+		$img->save($image);
+
+	
 		// Find the Category
 		$category = Product::findOrFail($input['product_id']);
 		$category->img = $new_name;
@@ -85,6 +97,19 @@ class UploadsController extends \BaseController {
 		$upload = $image->getClientOriginalName();
 
 		$image->move($destination, $new_name);
+
+		// Resize and watermar the image
+		$watermark = public_path('watermark.png');
+
+		$image = $destination . $new_name;
+		$resized = $destination .'r'.$new_name;
+
+		$img = Image::make($image);
+		$img->insert($watermark, 'bottom-right', 10, 10);
+		$img->resize(400, null, function ($constraint) {
+    	$constraint->aspectRatio();
+    	});
+		$img->save($resized);
 
 		
 		// SAVE THE IMAGE IN DATABASE

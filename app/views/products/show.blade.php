@@ -13,7 +13,7 @@
       <div class="col-md-5">
         {{$design->styles()->first()->name}}
         <a href="{{route('designs.show', $design->id)}}" class="thumbnail">
-    <img src="/uploads/products/{{$product->id}}/{{$design->styles->first()->id}}/{{$design->img}}"  alt="{{$design->name}}">
+    <img src="/uploads/products/{{$product->id}}/{{$design->styles->first()->id}}/r{{$design->img}}"  alt="{{$design->name}}">
 
     </a>
       </div>

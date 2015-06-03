@@ -15,7 +15,7 @@
 	</a>
     
   </h3>
- <img src="/uploads/products/{{$product->id}}/{{$design->styles()->first()->id}}/{{$design->img}}" width="500" class="img-responsive">
+ <img src="/uploads/products/{{$product->id}}/{{$design->styles()->first()->id}}/r{{$design->img}}" width="500" class="img-responsive">
 
 <?php
 Session::put('current_design', '/uploads/products/'.$product->id .'/'.$design->styles()->first()->id.'/'.$design->img)

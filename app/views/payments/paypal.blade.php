@@ -6,7 +6,7 @@
 $invoice = rand(10,10000);
 ?>
 
-<form id="paypal_checkout" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<form id="paypal_checkout" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_cart" />
 <input type="hidden" name="upload" value="1" />			
 <input type="hidden" name="no_note" value="0" />						
@@ -16,7 +16,7 @@ $invoice = rand(10,10000);
 
 
 
-		<input type="hidden" name="business" value="muvera-facilator@gmail.com" />
+		<input type="hidden" name="business" value="gogocake@gmail.com" />
 		<!-- Handing amount is set here -->
        <input type="hidden"  value="1.99" />
        <input type="hidden" name="currency_code" value="USD" />
@@ -24,7 +24,7 @@ $invoice = rand(10,10000);
         <input type="hidden" name="invoice" value="GC{{$invoice}}" />
        <input type="hidden" name="return" value="http://gogocake.com/return_url/GC{{$invoice}}" />			
        <input type="hidden" name="cbt" value="Click here to COMPLETE ORDER!" />
-       <input type="hidden" name="cancel_return" value="cancell url" />
+       <input type="hidden" name="cancel_return" value="http://gogocake.com" />
         <hr>
 <h3>{{count(Session::get('items'))}}Items</h3>
        <!-- foreach loop starts -->
@@ -53,7 +53,7 @@ $invoice = rand(10,10000);
             <!-- Product Quantity -->
         <input type="hidden" name="quantity_{{$option_loop}}" value="1" />
             <strong>Qty: </strong>{{$option_loop}}
-            <input type="hidden" name="tax_{{$option_loop}}" value="0.10" />
+            <input type="hidden" name="tax_{{$option_loop}}" value="0.79" />
             <!-- Total Cost -->
             <input type="hidden" name="amount_{{$option_loop}}" value="{{$sum + 7.99}}" />
             <strong>Price: </strong>{{$sum + 7.99}}
