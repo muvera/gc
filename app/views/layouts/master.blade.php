@@ -24,6 +24,13 @@
     <![endif]-->
 
     <meta name="p:domain_verify" content="1a6d44c0afbcf1640ec7c2743dece864"/>
+
+    <style>
+.well{
+    background: #ffefff url('http://bonkerzfuncentre.co.uk/wp-content/uploads/2012/01/background1.jpg') repeat-x top left; 
+}
+
+    </style>
   </head>
 
   <body>
@@ -37,7 +44,7 @@
     @endif
 
   @else
-  @include('layouts.user_nav')
+ <!--  ('layouts.user_nav') -->
   
   @endif
 
@@ -50,11 +57,10 @@
    </div>
     <div class="container">
 
-
-      <hr>
-
       <footer>
-        <p>Gogo Cake LLC. &copy; Company 2014</p>
+        <center>
+        <p>1227 Pasadena Ca, 91103 USA Gogo Cake LLC. &copy; Company 2014 Contact: (818) 310-3652 sales@gogocakes.com</p>
+      </center>
       </footer>
     </div> <!-- /container -->
 

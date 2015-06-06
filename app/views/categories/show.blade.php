@@ -2,7 +2,13 @@
 @section('content')
 <div class="row">
 
-  <h3><a href="/" class="">Gallery</a> - {{$category->name}}</h3>
+  <h4>
+<ol class="breadcrumb">
+  <li><a href="/">Home</a></li>
+  <li class="active">{{$category->name}}</li>
+</ol>
+</h4>
+
 
 <div class="row">
 @foreach($category->products()->get() as $product)

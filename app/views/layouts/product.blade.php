@@ -12,6 +12,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
 @yield('script')
+
+    <style>
+.well{
+    background: #ffefff;
+}
+    </style>
 </head>
 <body>
   @include('partials._flash')
@@ -20,7 +26,7 @@
   @include('layouts.admin_nav')
     @endif
   @else
-    @include('layouts.user_nav')
+    <!-- ('layouts.user_nav') -->
   @endif
        
       
@@ -34,11 +40,10 @@
    
     <div class="container">
 
-
-      <hr>
-
       <footer>
-        <p>Gogo Cake LLC. &copy; Company 2014</p>
+        <center>
+        <p>1227 Pasadena Ca, 91103 USA Gogo Cake LLC. &copy; Company 2014 Contact: (818) 310-3652 sales@gogocakes.com</p>
+      </center>
       </footer>
     </div> <!-- /container -->
 

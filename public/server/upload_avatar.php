@@ -44,7 +44,7 @@ $options = array(
     		//'upload_url' => '',
     		// Create square image
     		'crop' => true,
-    		'max_width' => 751,
+    		'max_width' => 980,
     		'max_height' => 751
     	),
     ),

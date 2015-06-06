@@ -15,9 +15,18 @@
       <div class="modal-body">
 
 <div class="row">
-  <div class="col-md-3">
+
+  <div class="col-md-5 well">
+    <h4>Nes Design</h4>
  {{Form::open(['route'=>'product_style_upload', 'files'=> true])}}
 {{Form::hidden('product_id', $product->id)}}
+
+
+    <!-- name -->
+<div class="form-group">
+    {{ Form::label('name', 'Name:') }}
+    {{ Form::text('name', null, ['class'=>'form-control']) }}
+</div>
 
     <!-- $style -->
 <div class="form-group">
@@ -39,19 +48,37 @@
         {{Form::close()}}
 
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6 well">
 
 @if($product->designs()->first())
   @foreach($product->designs()->get() as $design)
-  {{$design->styles()->first()->name}}
-  <img src="/uploads/products/{{$product->id}}/{{$design->styles()->first()->id}}/{{$design->img}}" width="100">
+  <strong>Name: </strong>{{$design->name}}
   <br>
+
+  <img src="/uploads/products/{{$product->id}}/{{$design->styles()->first()->id}}/{{$design->img}}" width="100">
+
+  <br>
+   <strong>Style: </strong>{{$design->styles()->first()->name}}
+ 
+  {{Form::open(['method'=>'DELETE', 'route'=>['designs.destroy',$design->id]])}}
+  {{Form::hidden('id', $design->id)}}
+      <a href="{{route('designs.edit', $design->id)}}" class="btn btn-default">Edit</a>
+  <button type="submit" class="btn btn-default">Delete</button>
+  {{Form::close()}}
+  <hr>
   @endforeach
+
 @endif
 
 
   </div>
+
 </div>
+
+
+
+
+
 
 
 

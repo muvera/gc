@@ -13,12 +13,11 @@
 
 Route::get('/', function()
 {
+	$vidcategories = Vidcategory::get();
 	return View::make('pages.index')
-			->with('active', 0);
+			->with('active', 0)
+			->with('vidcategories', $vidcategories);
 });
-
-
-
 
 
 Route::resource('categories', 'CategoriesController');
@@ -33,9 +32,11 @@ Route::resource('designs', 'DesignsController');
 Route::resource('administrators', 'AdministratorsController');
 Route::get('admin', ['as'=>'admin', 'uses'=>'AdministratorsController@index']);
 Route::get('admin_products', ['as'=>'admin_products', 'uses'=>'AdministratorsController@admin_products']);
+Route::get('admin_categories', ['as'=>'admin_categories', 'uses'=>'AdministratorsController@admin_categories']);
 Route::get('admin_styles', ['as'=>'admin_styles', 'uses'=>'AdministratorsController@admin_styles']);
 Route::get('admin_sizes', ['as'=>'admin_sizes', 'uses'=>'AdministratorsController@admin_sizes']);
 Route::get('product_styles', ['as'=>'product_styles', 'uses'=>'AdministratorsController@product_styles']);
+
 
 // Admin uploads
 Route::post('category_upload', ['as'=>'category_upload', 'uses'=>'UploadsController@category_upload']);
@@ -60,4 +61,8 @@ Route::get('delete_items', ['as'=>'delete_items', 'uses'=>'CartController@delete
 
 // Invoice and Return Url
 Route::post('return_url/{id}', ['as'=>'return_url', 'uses'=>'CartController@return_url']);
+
+// Videos
+Route::resource('videos', 'VideosController');
+Route::resource('vidcategories', 'VidcategoriesController');
 

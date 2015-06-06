@@ -7,7 +7,7 @@
 		{{ Form::label('greetings', 'Custom Text:') }}
 		{{ Form::text('greetings', null, ['class'=>'form-control']) }}
 </div>
-<button class="btn btn-success btn-block">Add to Cart</button>
+<button class="btn btn-success btn-block"> <span class="glyphicon glyphicon-shopping-cart"></span> Add to Cart</button>
 {{Form::close()}}
 
 @if(Session::get('items'))

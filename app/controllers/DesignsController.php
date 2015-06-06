@@ -63,6 +63,10 @@ class DesignsController extends \BaseController {
 	public function edit($id)
 	{
 		//
+			$design = Design::findOrFail($id);
+				return View::make('designs.edit')
+						->with('active', 0)
+						->with('design',$design);
 	}
 
 	/**
@@ -75,6 +79,14 @@ class DesignsController extends \BaseController {
 	public function update($id)
 	{
 		//
+			$input = Input::get();
+			$design = Design::findOrFail($id);
+			$design->name = $input['name'];
+			$design->save();
+
+
+				return Redirect::to('/admin_products')
+						->with('notification', 'Design Updated');
 	}
 
 	/**

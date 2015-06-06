@@ -1,5 +1,3 @@
-
-
 		<div class="box">
 			<div class="content clearfix">
 				@if(isset($_SESSION['avatar']))
@@ -16,6 +14,7 @@
 {{Form::open(['route'=>'preview_design'])}}
 {{Form::hidden('design', Session::get('current_design'))}}
 {{Form::hidden('design_id', $design->id)}}
+{{Form::hidden('style_id', $design->styles()->first()->id)}}
 <button type="submit" class="btn btn-success" >Preview</button>
 {{Form::close()}}
 
@@ -76,7 +75,7 @@
 			// Avatar setup
 			$('#avatarModal').imgPicker({
 				url: '/server/upload_avatar.php',
-				aspectRatio: 1,
+				aspectRatio: 12/9,
 				deleteComplete: function() {
 					$('#avatar2').attr('src', '/assets/img/default-avatar.png');
 					this.modal('hide');
@@ -94,6 +93,8 @@
 					this.modal('hide');
 				}
 			});
+
+			
 
 			// Demo only
 			$('.navbar-toggle').on('click',function(){$('.navbar-nav').toggleClass('navbar-collapse')});

@@ -6,24 +6,24 @@
 $invoice = rand(10,10000);
 ?>
 
-<form id="paypal_checkout" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<form id="paypal_checkout" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_cart" />
-<input type="hidden" name="upload" value="1" />			
-<input type="hidden" name="no_note" value="0" />						
-<input type="hidden" name="bn" value="PP-BuyNowBF" />					
-<input type="hidden" name="tax" value="0" />			
+<input type="hidden" name="upload" value="0" />
+<input type="hidden" name="no_note" value="0" />
+<input type="hidden" name="bn" value="PP-BuyNowBF" />
+<input type="hidden" name="tax" value="0" />
 <input type="hidden" name="rm" value="2" />
 
 
 
-		<input type="hidden" name="business" value="gogocake@gmail.com" />
-		<!-- Handing amount is set here -->
+<input type="hidden" name="business" value="muvera-facilitator@gmail.com" />
+<!-- Handing amount is set here -->
        <input type="hidden"  value="1.99" />
        <input type="hidden" name="currency_code" value="USD" />
        <input type="hidden" name="lc" value="US" />
-        <input type="hidden" name="invoice" value="GC{{$invoice}}" />
-       <input type="hidden" name="return" value="http://gogocake.com/return_url/GC{{$invoice}}" />			
-       <input type="hidden" name="cbt" value="Click here to COMPLETE ORDER!" />
+        <input type="hidden" name="invoice" value="GC_{{$invoice}}" />
+       <input type="hidden" name="return" value="http://gogocake.com/return_url/GC{{$invoice}}" />
+       <input type="hidden" name="cbt" value="Click here to COMPLETE ORDER" />
        <input type="hidden" name="cancel_return" value="http://gogocake.com" />
         <hr>
 <h3>{{count(Session::get('items'))}}Items</h3>
@@ -37,18 +37,15 @@ $invoice = rand(10,10000);
 
         @foreach($items as $key => $product)
 
-<input name="item_number_{{$option_loop}}" type="hidden" value="{{$product['id']}}">
+    <img src="{{$product['preview']}}" alt="{{$product['name']}}" class="img-responsive thumbnail" width="500">
 
-        <img src="{{$product['preview']}}" alt="{{$product['name']}}" class="img-responsive thumbnail" width="500">
-            <strong>Item Name:</strong> {{$product['name']}}
+<strong>Item Name:</strong> {{$product['name']}}
             <!-- product name -->
-            <input type="hidden" name="item_name_{{$option_loop}}" value="{{$product['name']}}"/>
+<input type="hidden" name="item_name_{{$option_loop}}" value="{{$product['name']}}"/>
 
 <br>
-<strong>Custom Text</strong><input name="on1_{{$option_loop}}" type="text" value="{{$product['greetings']}}">
+<strong>Custom Text </strong> <input name="on1_{{$option_loop}}" type="text" value="{{$product['greetings']}}">
 <input name="os1_{{$option_loop}}" type="hidden" value="{{$product['preview']}}">
-
-
 
             <!-- Product Quantity -->
         <input type="hidden" name="quantity_{{$option_loop}}" value="1" />
@@ -61,28 +58,19 @@ $invoice = rand(10,10000);
 <?php $option_loop++; ?>
 @endforeach
 </div>
-            
-            
-            
+               
          </div>
       <!--  foreach loop ends -->
 
-
-
-<h4>Choose Shipping</h4>
+<h4> <span class="glyphicon glyphicon-plane"></span> Select Shipping</h4>
 <select name="handling_cart" class="form-control">
     <option value="9.99">$9.99 Priority 2 days</option>
   <option value="24.99">$24.99 Overnight</option>
    <option value="6.50">$6.50 Regular 5 day</option>
 </select>
-
-
 <br>
-
-
-
-
-<button class="btn btn-success btn-block btn-lg" type="submit">Safe payments with Paypal</button>
+<button class="btn btn-success btn-block btn-lg" type="submit"> <span class="glyphicon glyphicon-credit-card"></span> Safe payments with Paypal</button>
+<a href="/delete_items" class="btn btn-default"> <span class="glyphicon glyphicon-trash"></span> Delete Items</a>
 </form>
 
 
