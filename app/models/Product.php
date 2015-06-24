@@ -23,4 +23,9 @@ class Product extends \Eloquent {
 		return $this->belongsToMany('Design');
 	}
 
+		public function Pproducts()
+	{
+		return $this->belongsToMany('Pproduct');
+	}
+
 }

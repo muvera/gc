@@ -6,20 +6,32 @@
       <thead>
         <tr>
           <th>#</th>
+          <th>Invoice</th>
           <th>Name</th>
           <th>Description</th>
-          <th>Image</th>
+          <th>Shipping</th>
           <th>Control</th>
         </tr>
       </thead>
       <tbody>
       	
+
+
 @foreach($orders as $order)
 <tr>
 	<td>{{$order->id}}</td>
-	<td><a href="{{route('orders.show',$order->id)}}">{{$order->name}}</a></td>
-	<td>{{$order->description}}</td>
-	<td>{{$order->img}}</td>
+  <td>{{$order->invoice}}</td>
+	<td><a href="{{route('orders.show',$order->id)}}">{{$order->first_name}} {{$order->last_name}}</a></td>
+	<td>
+
+<?php
+$items = unserialize($order->items);
+?>
+
+{{var_dump($items)}}
+
+  </td>
+	<td>{{$order->shipping}}</td>
 	<td>
 
 	<a href="{{route('orders.edit',$order->id)}}">Edit</a>

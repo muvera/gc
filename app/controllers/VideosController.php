@@ -13,6 +13,7 @@ class VideosController extends \BaseController {
 		//
 			$videos = Video::get();
 			return View::make('videos.index')
+						->with('active', 0)
 						->with('videos', $videos);
 	}
 
@@ -67,10 +68,10 @@ class VideosController extends \BaseController {
 	public function show($id)
 	{
 		//
-				$category = Video::findOrFail($id);
+				$video = Video::findOrFail($id);
 		
 				return View::make('videos.show')
-					->with('category',$category);
+					->with('video',$video);
 	}
 
 	/**

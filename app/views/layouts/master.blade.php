@@ -25,12 +25,6 @@
 
     <meta name="p:domain_verify" content="1a6d44c0afbcf1640ec7c2743dece864"/>
 
-    <style>
-.well{
-    background: #ffefff url('http://bonkerzfuncentre.co.uk/wp-content/uploads/2012/01/background1.jpg') repeat-x top left; 
-}
-
-    </style>
   </head>
 
   <body>
@@ -44,17 +38,17 @@
     @endif
 
   @else
- <!--  ('layouts.user_nav') -->
+  
+@include('layouts.public_nav')
   
   @endif
 
-       <div class="well">
       <div class="container">
 
         @yield('content')
      
       </div>
-   </div>
+
     <div class="container">
 
       <footer>

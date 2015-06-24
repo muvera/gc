@@ -1,4 +1,8 @@
-
+<?php
+if(!isset($preview)){
+	$preview = '0';
+}
+?>
 {{Form::open(['route'=>'add_item'])}}
 {{Form::hidden('design_id', $design->id)}}
 {{Form::hidden('preview', $preview)}}

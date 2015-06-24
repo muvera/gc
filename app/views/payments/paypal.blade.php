@@ -6,7 +6,7 @@
 $invoice = rand(10,10000);
 ?>
 
-<form id="paypal_checkout" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+<form id="paypal_checkout" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 <input type="hidden" name="cmd" value="_cart" />
 <input type="hidden" name="upload" value="0" />
 <input type="hidden" name="no_note" value="0" />
@@ -16,7 +16,9 @@ $invoice = rand(10,10000);
 
 
 
-<input type="hidden" name="business" value="muvera-facilitator@gmail.com" />
+<input type="hidden" name="business" value="gogocake@gmail.com" />
+
+
 <!-- Handing amount is set here -->
        <input type="hidden"  value="1.99" />
        <input type="hidden" name="currency_code" value="USD" />
@@ -35,9 +37,11 @@ $invoice = rand(10,10000);
                    ?>
 <div class="row">
 
+
+
         @foreach($items as $key => $product)
 
-    <img src="{{$product['preview']}}" alt="{{$product['name']}}" class="img-responsive thumbnail" width="500">
+  <img src="{{$product['preview']}}" alt="{{$product['name']}}" class="img-responsive thumbnail" width="500">
 
 <strong>Item Name:</strong> {{$product['name']}}
             <!-- product name -->
@@ -50,23 +54,30 @@ $invoice = rand(10,10000);
             <!-- Product Quantity -->
         <input type="hidden" name="quantity_{{$option_loop}}" value="1" />
             <strong>Qty: </strong>{{$option_loop}}
-            <input type="hidden" name="tax_{{$option_loop}}" value="0.79" />
+            <input type="hidden" name="tax_{{$option_loop}}" value="0.59" />
             <!-- Total Cost -->
-            <input type="hidden" name="amount_{{$option_loop}}" value="{{$sum + 7.99}}" />
-            <strong>Price: </strong>{{$sum + 7.99}}
+            <input type="hidden" name="amount_{{$option_loop}}" value="{{$sum + 5.99}}" />
+            <strong>Price: </strong>{{$sum + 5.99}}
+
+            <input type="hidden" name="shipping_{{$option_loop}}" value="0.99" />
 <br>
 <?php $option_loop++; ?>
 @endforeach
+
+
+
 </div>
-               
+         
+         <strong></strong>      
          </div>
       <!--  foreach loop ends -->
 
 <h4> <span class="glyphicon glyphicon-plane"></span> Select Shipping</h4>
 <select name="handling_cart" class="form-control">
-    <option value="9.99">$9.99 Priority 2 days</option>
-  <option value="24.99">$24.99 Overnight</option>
-   <option value="6.50">$6.50 Regular 5 day</option>
+    <option value="9.99">$9.99 USPS Priority 2 days</option>
+  <option value="24.99">$24.99 USPS Overnight Express </option>
+   <option value="6.50">$6.50 USPS Regular 5 day</option>
+    <option value="6.50">$12.50 USPS International</option>
 </select>
 <br>
 <button class="btn btn-success btn-block btn-lg" type="submit"> <span class="glyphicon glyphicon-credit-card"></span> Safe payments with Paypal</button>

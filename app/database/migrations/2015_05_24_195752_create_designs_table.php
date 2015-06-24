@@ -18,6 +18,7 @@ class CreateDesignsTable extends Migration {
 			$table->string('name');
 			$table->string('description');
 			$table->string('img');
+			$table->integer('costumize');
 			$table->timestamps();
 		});
 	}

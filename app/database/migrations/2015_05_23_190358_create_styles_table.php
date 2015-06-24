@@ -18,6 +18,14 @@ class CreateStylesTable extends Migration {
 			$table->string('name');
 			$table->string('description');
 			$table->string('img');
+			$table->integer('img');
+			$table->integer('dimention');
+			$table->integer('cut');
+			$table->integer('precut');
+			$table->integer('color');
+			$table->string'material');
+			$table->integer('costumize');
+			$table->string('price');
 			$table->timestamps();
 		});
 	}

@@ -298,5 +298,41 @@ if($input['style_id'] == 3){
 	}
 
 
+	public function learnings_upload(){
+
+		$input = Input::get();
+		$image = Input::file('img');
+		$folder = public_path('/uploads/learnings/'.$input['learning_id']);
+
+		if(!file_exists($folder)){
+			mkdir($folder);
+		}
+		$new_name = rand(700,0).'.png';
+		$upload = $image->getClientOriginalName();
+
+		$image->move(public_path('/uploads/learnings/' . $input['learning_id']), $new_name);
+
+		$image = Image::make($folder.'/'.$new_name);
+		$image->fit(300);
+		$image->save($folder.'/c'. $new_name);
+
+
+		// Save the image name in to the img database
+		$img = new Img;
+		$img->name = $input['name'];
+		$img->img = $new_name;
+		$img->save();
+		
+		// Attach the Image
+		$learning = Learning::findOrFail($input['learning_id']);
+		$learning->imgs()->attach($img->id);
+
+
+		return Redirect::back()->with('notification','Image has been uploaded');
+
+	}
+
+
+
 
 }

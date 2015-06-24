@@ -66,3 +66,9 @@ Route::post('return_url/{id}', ['as'=>'return_url', 'uses'=>'CartController@retu
 Route::resource('videos', 'VideosController');
 Route::resource('vidcategories', 'VidcategoriesController');
 
+// Learning
+Route::resource('learnings', 'LearningsController');
+Route::post('learnings_upload', ['as'=>'learnings_upload', 'uses'=>'UploadsController@learnings_upload']);
+
+// Images
+Route::resource('imgs', 'ImgsController');

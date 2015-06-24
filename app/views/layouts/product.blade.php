@@ -13,11 +13,6 @@
 
 @yield('script')
 
-    <style>
-.well{
-    background: #ffefff;
-}
-    </style>
 </head>
 <body>
   @include('partials._flash')
@@ -30,12 +25,10 @@
   @endif
        
       
-      <div class="well">
       <div class="container">
 
         @yield('content')
      
-      </div>
       </div>
    
     <div class="container">

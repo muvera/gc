@@ -17,7 +17,7 @@
 
 
   <div class="col-md-5">
-	<img src="{{$preview}}" width="500" class="img-responsive">
+	<img src="{{$preview}}" width="500" class="img-responsive thumbnail">
 <br>
   </div>
 

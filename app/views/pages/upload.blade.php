@@ -1,3 +1,5 @@
+  <h3>Customize</h3>
+
 		<div class="box">
 			<div class="content clearfix">
 				@if(isset($_SESSION['avatar']))
@@ -9,7 +11,7 @@
 				@endif
 				
 				
-				<button type="button" class="btn btn-default" data-ip-modal="#avatarModal">Edit Photo</button>
+				<button type="button" class="btn btn-primary" data-ip-modal="#avatarModal"> <span class="glyphicon glyphicon-camera"> </span> Upload Photo</button>
 
 {{Form::open(['route'=>'preview_design'])}}
 {{Form::hidden('design', Session::get('current_design'))}}

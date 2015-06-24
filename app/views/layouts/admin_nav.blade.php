@@ -29,6 +29,8 @@
             <li @if($active == 3) class="active" @endif><a href="/admin_products">Products</a></li>
             <li @if($active == 4) class="active" @endif><a href="/admin_styles">Styles</a></li>
             <li @if($active == 5) class="active" @endif><a href="/admin_sizes">Sizes</a></li>
+            <li @if($active == 6) class="active" @endif><a href="/learnings">Learnings</a></li>
+            <li @if($active == 7) class="active" @endif><a href="/videos">Videos</a></li>
           </ul>
 
 

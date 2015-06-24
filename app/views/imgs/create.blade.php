@@ -1,0 +1,1 @@
+/var/www/gogocake/app/views/imgs/create.blade.php

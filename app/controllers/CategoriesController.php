@@ -61,9 +61,11 @@ class CategoriesController extends \BaseController {
 	{
 		//
 		$category = Category::findOrFail($id);
+		$products = $category->products()->get();
 				return View::make('categories.show')
 				->with('active',2)
-					->with('category',$category);
+					->with('category',$category)
+					->with('products', $products);
 	}
 
 	/**

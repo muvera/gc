@@ -1,37 +1,50 @@
 @extends('layouts.master')
 @section('title')
-Custom Edible Photos & Prints
+Digital Cake Decorating & Custom Edible Images for Cakes, Cookies and Pastries. Online ditigital cake decorating for bakers and bakeries. Lessons, Tutorials, Videos, Step by step. 
 @stop
+
+		<?php
+		$products = Product::where('feature', '=', 1)->get();
+		?>
 
 @section('content')
 
 <div class="row">
-	<div class="col-md-6">
-	<img src="http://storage.googleapis.com/anothermm/edible-image-cake.png" alt="Gogo Cake Edible Cake Images Banner" class="img-responsive">
-	</div>
-	<div class="col-md-6">
+
+	<div class="col-md-2">
+    @include('layouts.user_menu')
+</div>
+	<div class="col-md-10">
+
+@include('include.carrusel')
+
+
 
 <div class="panel panel-default">
-<div class="panel-heading"><h1>Custom Edible Images</h1></div>
-		<div class="panel-body">
-		<?php
-		$category = Category::find(2);
-		$categories = Category::get();
-		?>
 
+
+<div class="panel-heading">Popular Products</div>
+		<div class="panel-body">
 <div class="row">
-@foreach($category->products()->get() as $product)
-<div class="col-md-4">
+@foreach($products as $product)
+<div class="col-md-4 thumbnail ">
 <a href="{{route('products.show', $product->id)}}" >
-<img src="/uploads/products/{{$product->id}}/{{$product->img}}" width="300" class="thumbnail img-responsive" >
+<img src="/uploads/products/{{$product->id}}/{{$product->img}}" width="300" class="img-responsive" >
+
+<h3>{{str_limit($product->name, '22')}}</h3>
 </a>
+{{str_limit($product->description, '45')}}
+<br>
+${{$product->styles()->first()->price}}
 </div>
 @endforeach
 </div>
+
 <div class="panel-footer">
-	@foreach($categories as $category)
-	<strong><a href="{{route('categories.show', $category->id)}}">{{$category->name}}</a></strong> | 
-	@endforeach
+<h1>Welcome to Digital Cake Decorating by GogoCake</h1>
+<p>We specialize in edible printing design for cakes, cupcakes and pastries since 2008. Our company was started in Palo Alto California and has establish a loyal following since. We have been featured in multiple TV shows, Magazines and our product designs have appear in movies and thousands of cakes around the country. 
+	<br>
+	Thank you for using our edible image digital products and services. We hope you have fun designing your own edible image in our website of lear how to doit from our lessons and video tutorials. If you have any feed back please send us an email to sales@gogocakes.com</p>
 </div>
 
 
